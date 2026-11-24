@@ -1,0 +1,997 @@
+[gd_scene format=3 uid="uid://d0sonx8j3ioxa"]
+
+[ext_resource type="Script" uid="uid://bq0summpb3dw4" path="res://scripts/choose_game_scene.gd" id="1_cgame"]
+[ext_resource type="Theme" uid="uid://o0pld3buj8af" path="res://Assets/Arcade/daylight-theme.tres" id="1_muk0j"]
+[ext_resource type="Texture2D" uid="uid://cca05wamm68n4" path="res://Assets/Arcade/forest-soft.png" id="3_vglxf"]
+[ext_resource type="Texture2D" uid="uid://bqud1iobifytp" path="res://Assets/Arcade/daylight-panel.svg" id="4_vglxf"]
+[ext_resource type="FontVariation" path="res://Assets/Arcade/Online/Outfit-Medium.tres" id="5_dxjs5"]
+[ext_resource type="Texture2D" uid="uid://barycirfkqtgp" path="res://Assets/Arcade/daylight-field.svg" id="7_3r834"]
+[ext_resource type="Texture2D" uid="uid://iexna6jy5cmt" path="res://Assets/Arcade/twilight-garden.png" id="8_gtsbo"]
+[ext_resource type="Texture2D" uid="uid://du1wiyrovrrvi" path="res://Assets/Arcade/sprites-source.png" id="9_8r1i5"]
+[ext_resource type="Texture2D" uid="uid://c1yacq6xs2cx7" path="res://Assets/Arcade/orchard-v2.png" id="10_qrd2o"]
+[ext_resource type="Texture2D" uid="uid://b1gqymosuh4lr" path="res://Assets/Arcade/garden-v2.png" id="11_1iuks"]
+[ext_resource type="Texture2D" uid="uid://cde51pluy473l" path="res://Assets/Arcade/canyon-v2.png" id="12_628qv"]
+[ext_resource type="Texture2D" uid="uid://ruurlt5aiwfd" path="res://Assets/Arcade/sprites-driver-v2.png" id="13_fyw8g"]
+[ext_resource type="Texture2D" uid="uid://cfxplvjhkg52h" path="res://Assets/Arcade/arena-v2.png" id="14_3qpw1"]
+[ext_resource type="Texture2D" uid="uid://d3hme5pan1jy6" path="res://game/BULLOCK_CART/assets/generated/cart-centered-player.png" id="15_bullock"]
+[ext_resource type="Script" uid="uid://cmaq3wpsmkmug" path="res://scripts/ui/living_garden.gd" id="living_garden_script"]
+[ext_resource type="Script" uid="uid://gb52huyujiua" path="res://scripts/ui/menu_ambience.gd" id="patient_ambience"]
+[ext_resource type="Texture2D" uid="uid://dh8spggqwauku" path="res://Assets/Arcade/Online/Icons/arrow-left.svg" id="patient_icon_arrow-left"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s8s5b"]
+texture = ExtResource("4_vglxf")
+texture_margin_left = 24.0
+texture_margin_top = 24.0
+texture_margin_right = 24.0
+texture_margin_bottom = 24.0
+
+[sub_resource type="StyleBoxFlat" id="forest_secondary"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(0.995, 0.99, 0.975, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.4, 0.56, 0.56, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="forest_soft"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(0.87, 0.94, 0.91, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.4, 0.56, 0.56, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lqjqa"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+texture = ExtResource("7_3r834")
+texture_margin_left = 24.0
+texture_margin_top = 24.0
+texture_margin_right = 24.0
+texture_margin_bottom = 24.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jv0kx"]
+bg_color = Color(1, 1, 1, 0)
+draw_center = false
+border_width_left = 2
+border_width_top = 3
+border_width_right = 2
+border_width_bottom = 5
+border_color = Color(1, 0.8117647, 0.3882353, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+shadow_color = Color(0.12, 0.25, 0.35, 0.1)
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="Theme" id="Theme_muk0j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vkesn"]
+atlas = ExtResource("9_8r1i5")
+region = Rect2(45, 97, 465, 360)
+filter_clip = true
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d5xtu"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+texture = ExtResource("7_3r834")
+texture_margin_left = 24.0
+texture_margin_top = 24.0
+texture_margin_right = 24.0
+texture_margin_bottom = 24.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7owkn"]
+bg_color = Color(1, 1, 1, 0)
+draw_center = false
+border_width_left = 2
+border_width_top = 3
+border_width_right = 2
+border_width_bottom = 5
+border_color = Color(1, 0.8117647, 0.3882353, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+shadow_color = Color(0.12, 0.25, 0.35, 0.1)
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nxqj"]
+atlas = ExtResource("9_8r1i5")
+region = Rect2(537, 106, 470, 333)
+filter_clip = true
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h3pk7"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+texture = ExtResource("7_3r834")
+texture_margin_left = 24.0
+texture_margin_top = 24.0
+texture_margin_right = 24.0
+texture_margin_bottom = 24.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ankai"]
+bg_color = Color(1, 1, 1, 0)
+draw_center = false
+border_width_left = 2
+border_width_top = 3
+border_width_right = 2
+border_width_bottom = 5
+border_color = Color(1, 0.8117647, 0.3882353, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+shadow_color = Color(0.12, 0.25, 0.35, 0.1)
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e41ru"]
+atlas = ExtResource("9_8r1i5")
+region = Rect2(1027, 99, 480, 348)
+filter_clip = true
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bb2ud"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+texture = ExtResource("7_3r834")
+texture_margin_left = 24.0
+texture_margin_top = 24.0
+texture_margin_right = 24.0
+texture_margin_bottom = 24.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_doaps"]
+bg_color = Color(1, 1, 1, 0)
+draw_center = false
+border_width_left = 2
+border_width_top = 3
+border_width_right = 2
+border_width_bottom = 5
+border_color = Color(1, 0.8117647, 0.3882353, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+shadow_color = Color(0.12, 0.25, 0.35, 0.1)
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmo7k"]
+atlas = ExtResource("13_fyw8g")
+region = Rect2(34, 566, 505, 374)
+filter_clip = true
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dvhue"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+texture = ExtResource("7_3r834")
+texture_margin_left = 24.0
+texture_margin_top = 24.0
+texture_margin_right = 24.0
+texture_margin_bottom = 24.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8trp6"]
+bg_color = Color(1, 1, 1, 0)
+draw_center = false
+border_width_left = 2
+border_width_top = 3
+border_width_right = 2
+border_width_bottom = 5
+border_color = Color(1, 0.8117647, 0.3882353, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+shadow_color = Color(0.12, 0.25, 0.35, 0.1)
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vf64"]
+atlas = ExtResource("9_8r1i5")
+region = Rect2(548, 567, 438, 383)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bullock"]
+atlas = ExtResource("15_bullock")
+region = Rect2(0, 0, 313, 318)
+filter_clip = true
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_svol7"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+texture = ExtResource("7_3r834")
+texture_margin_left = 24.0
+texture_margin_top = 24.0
+texture_margin_right = 24.0
+texture_margin_bottom = 24.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hck6c"]
+bg_color = Color(1, 1, 1, 0)
+draw_center = false
+border_width_left = 2
+border_width_top = 3
+border_width_right = 2
+border_width_bottom = 5
+border_color = Color(1, 0.8117647, 0.3882353, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+shadow_color = Color(0.12, 0.25, 0.35, 0.1)
+shadow_offset = Vector2(0, 4)
+
+[node name="ChooseGameScene" type="Control" unique_id=1357170814]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_muk0j")
+script = ExtResource("1_cgame")
+metadata/arcade_authored = true
+metadata/arcade_authored_control = true
+
+[node name="ArcadeBackdrop" type="TextureRect" parent="." unique_id=653967447]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme = ExtResource("1_muk0j")
+texture = ExtResource("3_vglxf")
+expand_mode = 1
+stretch_mode = 6
+script = ExtResource("living_garden_script")
+metadata/arcade_authored_control = true
+
+[node name="MenuAmbience" type="Control" parent="ArcadeBackdrop" unique_id=402818707]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("patient_ambience")
+metadata/arcade_authored_control = true
+
+[node name="BGColor" type="ColorRect" parent="." unique_id=1194295764]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -14.0
+offset_top = 14.0
+offset_right = -14.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_muk0j")
+color = Color(1, 1, 1, 0)
+metadata/arcade_authored_control = true
+
+[node name="Header" type="Panel" parent="." unique_id=1690426179]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 98.0
+grow_horizontal = 2
+theme = ExtResource("1_muk0j")
+theme_override_styles/panel = SubResource("StyleBoxTexture_s8s5b")
+metadata/arcade_authored_control = true
+
+[node name="TitleLabel" type="Label" parent="Header" unique_id=1060276498]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 12.0
+offset_right = 700.0
+offset_bottom = 48.0
+theme = ExtResource("1_muk0j")
+theme_override_colors/font_color = Color(0.16, 0.2, 0.32, 1)
+theme_override_colors/font_outline_color = Color(0.16, 0.2, 0.32, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("5_dxjs5")
+theme_override_font_sizes/font_size = 26
+text = "Choose Game"
+metadata/arcade_authored_control = true
+
+[node name="MechLabel" type="Label" parent="Header" unique_id=266871391]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 52.0
+offset_right = 700.0
+offset_bottom = 70.0
+theme = ExtResource("1_muk0j")
+theme_override_colors/font_color = Color(0.16, 0.2, 0.32, 1)
+theme_override_font_sizes/font_size = 12
+text = "Five ways to move. One brighter day."
+metadata/arcade_authored_control = true
+
+[node name="StatusLabel" type="Label" parent="Header" unique_id=882831177]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -420.0
+offset_top = 14.0
+offset_right = -24.0
+offset_bottom = -14.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("1_muk0j")
+theme_override_colors/font_color = Color(0.16, 0.2, 0.32, 1)
+theme_override_font_sizes/font_size = 13
+text = "Choose a game to begin your session"
+horizontal_alignment = 2
+metadata/arcade_authored_control = true
+
+[node name="GameGrid" type="GridContainer" parent="." unique_id=146444568]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = 180.0
+offset_right = -28.0
+offset_bottom = -145.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_muk0j")
+theme_override_constants/h_separation = 18
+theme_override_constants/v_separation = 18
+columns = 5
+metadata/arcade_authored_control = true
+
+[node name="HatTrickButton" type="Button" parent="GameGrid" unique_id=269478581]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_muk0j")
+theme_override_colors/font_color = Color(0.08, 0.18, 0.23, 1)
+theme_override_colors/font_focus_color = Color(0.08, 0.18, 0.23, 1)
+theme_override_colors/font_pressed_color = Color(0.08, 0.18, 0.23, 1)
+theme_override_colors/font_hover_color = Color(0.08, 0.18, 0.23, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.08, 0.18, 0.23, 1)
+theme_override_colors/font_disabled_color = Color(0.16, 0.2, 0.32, 1)
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("forest_secondary")
+theme_override_styles/pressed = SubResource("forest_soft")
+theme_override_styles/hover = SubResource("forest_soft")
+theme_override_styles/hover_pressed = SubResource("forest_soft")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_lqjqa")
+theme_override_styles/focus = SubResource("StyleBoxFlat_jv0kx")
+expand_icon = true
+metadata/arcade_authored_control = true
+
+[node name="WorldPreview" type="TextureRect" parent="GameGrid/HatTrickButton" unique_id=1240960694]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = -12.0
+offset_bottom = -53.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_muk0j")
+texture = ExtResource("8_gtsbo")
+expand_mode = 1
+stretch_mode = 6
+metadata/arcade_authored_control = true
+
+[node name="@TextureRect@135" type="TextureRect" parent="GameGrid/HatTrickButton" unique_id=654932940]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 0
+offset_left = 8.0
+offset_top = -4.0
+offset_right = 211.0
+offset_bottom = 196.0
+mouse_filter = 2
+theme = ExtResource("1_muk0j")
+texture = SubResource("AtlasTexture_vkesn")
+expand_mode = 1
+stretch_mode = 5
+metadata/arcade_authored_control = true
+
+[node name="@VBoxContainer@134" type="VBoxContainer" parent="GameGrid/HatTrickButton" unique_id=1360253904]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = 65.0
+offset_right = -14.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_muk0j")
+theme_override_constants/separation = 18
+alignment = 1
+metadata/arcade_authored_control = true
+
+[node name="@Label@136" type="Label" parent="GameGrid/HatTrickButton/@VBoxContainer@134" unique_id=1180728576]
+layout_mode = 2
+theme = ExtResource("1_muk0j")
+theme_override_colors/font_color = Color(0.16, 0.2, 0.32, 1)
+theme_override_fonts/font = ExtResource("5_dxjs5")
+theme_override_font_sizes/font_size = 23
+text = "HAT-TRICK"
+horizontal_alignment = 1
+metadata/arcade_authored_control = true
+
+[node name="Description" type="Label" parent="GameGrid/HatTrickButton/@VBoxContainer@134" unique_id=1419825540]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme = ExtResource("1_muk0j")
+theme_override_colors/font_color = Color(0.16, 0.2, 0.32, 1)
+theme_override_font_sizes/font_size = 15
+text = "Catch the falling balls"
+horizontal_alignment = 1
+autowrap_mode = 3
+metadata/arcade_authored_control = true
+
+[node name="PlayLabel" type="Label" parent="GameGrid/HatTrickButton/@VBoxContainer@134" unique_id=1830122233]
+layout_mode = 2
+theme = ExtResource("1_muk0j")
+theme_override_colors/font_color = Color(0.16, 0.2, 0.32, 1)
+theme_override_colors/font_outline_color = Color(0.16, 0.2, 0.32, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("5_dxjs5")
+theme_override_font_sizes/font_size = 24
+text = "PLAY  ›"
+horizontal_alignment = 1
+metadata/arcade_authored_control = true
+
+[node name="FruitBasketButton" type="Button" parent="GameGrid" unique_id=1202186055]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_muk0j")
+theme_override_colors/font_color = Color(0.08, 0.18, 0.23, 1)
+theme_override_colors/font_focus_color = Color(0.08, 0.18, 0.23, 1)
+theme_override_colors/font_pressed_color = Color(0.08, 0.18, 0.23, 1)
+theme_override_colors/font_hover_color = Color(0.08, 0.18, 0.23, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.08, 0.18, 0.23, 1)
+theme_override_colors/font_disabled_color = Color(0.16, 0.2, 0.32, 1)
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("forest_secondary")
+theme_override_styles/pressed = SubResource("forest_soft")
+theme_override_styles/hover = SubResource("forest_soft")
+theme_override_styles/hover_pressed = SubResource("forest_soft")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_d5xtu")
+theme_override_styles/focus = SubResource("StyleBoxFlat_7owkn")
+expand_icon = true
+metadata/arcade_authored_control = true
+
+[node name="WorldPreview" type="TextureRect" parent="GameGrid/FruitBasketButton" unique_id=2132902075]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = -12.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_muk0j")
+texture = ExtResource("10_qrd2o")
+expand_mode = 1
+stretch_mode = 6
+metadata/arcade_authored_control = true
+
+[node name="@VBoxContainer@137" type="VBoxContainer" parent="GameGrid/FruitBasketButton" unique_id=1523045668]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = 63.0
+offset_right = -14.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_muk0j")
+theme_override_constants/separation = 18
+alignment = 1
+metadata/arcade_authored_control = true
+
+[node name="@TextureRect@138" type="TextureRect" parent="GameGrid/FruitBasketButton/@VBoxContainer@137" unique_id=2033031424]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("1_muk0j")
+texture = SubResource("AtlasTexture_1nxqj")
+expand_mode = 1
+stretch_mode = 5
+metadata/arcade_authored_control = true
+
+[node name="@Label@139" type="Label" parent="GameGrid/FruitBasketButton/@VBoxContainer@137" unique_id=1302960949]
+layout_mode = 2
+theme = ExtResource("1_muk0j")
+theme_override_colors/font_color = Color(0.16, 0.2, 0.32, 1)
+theme_override_fonts/font = ExtResource("5_dxjs5")
+theme_override_font_sizes/font_size = 23
+text = "FRUIT BASKET"
+horizontal_alignment = 1
+metadata/arcade_authored_control = true
+
+[node name="Description" type="Label" parent="GameGrid/FruitBasketButton/@VBoxContainer@137" unique_id=1515733707]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme = ExtResource("1_muk0j")
+theme_override_colors/font_color = Color(0.16, 0.2, 0.32, 1)
+theme_override_font_sizes/font_size = 15
+text = "Match fruit to its basket"
+horizontal_alignment = 1
+autowrap_mode = 3
+metadata/arcade_authored_control = true
+
+[node name="PlayLabel" type="Label" parent="GameGrid/FruitBasketButton/@VBoxContainer@137" unique_id=341123816]
+layout_mode = 2
+theme = ExtResource("1_muk0j")
+theme_override_colors/font_color = Color(0.16, 0.2, 0.32, 1)
+theme_override_colors/font_outline_color = Color(0.16, 0.2, 0.32, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("5_dxjs5")
+theme_override_font_sizes/font_size = 24
+text = "PLAY  ›"
+horizontal_alignment = 1
+metadata/arcade_authored_control = true
+
+[node name="RNRButton" type="Button" parent="GameGrid" unique_id=582748105]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_muk0j")
+theme_override_colors/font_color = Color(0.08, 0.18, 0.23, 1)
+theme_override_colors/font_focus_color = Color(0.08, 0.18, 0.23, 1)
+theme_override_colors/font_pressed_color = Color(0.08, 0.18, 0.23, 1)
+theme_override_colors/font_hover_color = Color(0.08, 0.18, 0.23, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.08, 0.18, 0.23, 1)
+theme_override_colors/font_disabled_color = Color(0.16, 0.2, 0.32, 1)
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("forest_secondary")
+theme_override_styles/pressed = SubResource("forest_soft")
+theme_override_styles/hover = SubResource("forest_soft")
+theme_override_styles/hover_pressed = SubResource("forest_soft")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_h3pk7")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ankai")
+expand_icon = true
+metadata/arcade_authored_control = true
+
+[node name="WorldPreview" type="TextureRect" parent="GameGrid/RNRButton" unique_id=1140735010]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = -12.0
+offset_bottom = -200.0
+mouse_filter = 2
+theme = ExtResource("1_muk0j")
+texture = ExtResource("11_1iuks")
+expand_mode = 1
+stretch_mode = 6
+metadata/arcade_authored_control = true
+
+[node name="@VBoxContainer@140" type="VBoxContainer" parent="GameGrid/RNRButton" unique_id=1263569938]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 11.0
+offset_right = -16.0
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_muk0j")
+theme_override_constants/separation = 18
+alignment = 1
+metadata/arcade_authored_control = true
+
+[node name="@TextureRect@141" type="TextureRect" parent="GameGrid/RNRButton/@VBoxContainer@140" unique_id=1723164879]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("1_muk0j")
+texture = SubResource("AtlasTexture_e41ru")
+expand_mode = 1
+stretch_mode = 5
+metadata/arcade_authored_control = true
+
+[node name="@Label@142" type="Label" parent="GameGrid/RNRButton/@VBoxContainer@140" unique_id=1583067937]
+layout_mode = 2
+theme = ExtResource("1_muk0j")
+theme_override_colors/font_color = Color(0.16, 0.2, 0.32, 1)
+theme_override_fonts/font = ExtResource("5_dxjs5")
+theme_override_font_sizes/font_size = 23
+text = "R-N-R"
+horizontal_alignment = 1
+metadata/arcade_authored_control = true
+
+[node name="Description" type="Label" parent="GameGrid/RNRButton/@VBoxContainer@140" unique_id=1062911878]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme = ExtResource("1_muk0j")
+theme_override_colors/font_color = Color(0.16, 0.2, 0.32, 1)
+theme_override_font_sizes/font_size = 15
+text = "Water your growing garden"
+horizontal_alignment = 1
+autowrap_mode = 3
+metadata/arcade_authored_control = true
+
+[node name="PlayLabel" type="Label" parent="GameGrid/RNRButton/@VBoxContainer@140" unique_id=187006138]
+layout_mode = 2
+theme = ExtResource("1_muk0j")
+theme_override_colors/font_color = Color(0.16, 0.2, 0.32, 1)
+theme_override_colors/font_outline_color = Color(0.16, 0.2, 0.32, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("5_dxjs5")
+theme_override_font_sizes/font_size = 24
+text = "PLAY  ›"
+horizontal_alignment = 1
+metadata/arcade_authored_control = true
+
+[node name="TukTukButton" type="Button" parent="GameGrid" unique_id=1296748105]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_muk0j")
+theme_override_colors/font_color = Color(0.08, 0.18, 0.23, 1)
+theme_override_colors/font_focus_color = Color(0.08, 0.18, 0.23, 1)
+theme_override_colors/font_pressed_color = Color(0.08, 0.18, 0.23, 1)
+theme_override_colors/font_hover_color = Color(0.08, 0.18, 0.23, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.08, 0.18, 0.23, 1)
+theme_override_colors/font_disabled_color = Color(0.16, 0.2, 0.32, 1)
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("forest_secondary")
+theme_override_styles/pressed = SubResource("forest_soft")
+theme_override_styles/hover = SubResource("forest_soft")
+theme_override_styles/hover_pressed = SubResource("forest_soft")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_bb2ud")
+theme_override_styles/focus = SubResource("StyleBoxFlat_doaps")
+expand_icon = true
+metadata/arcade_authored_control = true
+
+[node name="WorldPreview" type="TextureRect" parent="GameGrid/TukTukButton" unique_id=1444534723]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = -12.0
+offset_bottom = -200.0
+mouse_filter = 2
+theme = ExtResource("1_muk0j")
+texture = ExtResource("12_628qv")
+expand_mode = 1
+stretch_mode = 6
+metadata/arcade_authored_control = true
+
+[node name="@VBoxContainer@143" type="VBoxContainer" parent="GameGrid/TukTukButton" unique_id=1513027566]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = 26.0
+offset_right = -14.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_muk0j")
+theme_override_constants/separation = 18
+alignment = 1
+metadata/arcade_authored_control = true
+
+[node name="@TextureRect@144" type="TextureRect" parent="GameGrid/TukTukButton/@VBoxContainer@143" unique_id=1293393166]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("1_muk0j")
+texture = SubResource("AtlasTexture_fmo7k")
+expand_mode = 1
+stretch_mode = 5
+metadata/arcade_authored_control = true
+
+[node name="@Label@145" type="Label" parent="GameGrid/TukTukButton/@VBoxContainer@143" unique_id=401513760]
+layout_mode = 2
+theme = ExtResource("1_muk0j")
+theme_override_colors/font_color = Color(0.16, 0.2, 0.32, 1)
+theme_override_fonts/font = ExtResource("5_dxjs5")
+theme_override_font_sizes/font_size = 23
+text = "TUK-TUK"
+horizontal_alignment = 1
+metadata/arcade_authored_control = true
+
+[node name="Description" type="Label" parent="GameGrid/TukTukButton/@VBoxContainer@143" unique_id=557067037]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme = ExtResource("1_muk0j")
+theme_override_colors/font_color = Color(0.16, 0.2, 0.32, 1)
+theme_override_font_sizes/font_size = 15
+text = "Navigate the rocky gaps"
+horizontal_alignment = 1
+autowrap_mode = 3
+metadata/arcade_authored_control = true
+
+[node name="PlayLabel" type="Label" parent="GameGrid/TukTukButton/@VBoxContainer@143" unique_id=394649444]
+layout_mode = 2
+theme = ExtResource("1_muk0j")
+theme_override_colors/font_color = Color(0.16, 0.2, 0.32, 1)
+theme_override_colors/font_outline_color = Color(0.16, 0.2, 0.32, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("5_dxjs5")
+theme_override_font_sizes/font_size = 24
+text = "PLAY  ›"
+horizontal_alignment = 1
+metadata/arcade_authored_control = true
+
+[node name="PingPongButton" type="Button" parent="GameGrid" unique_id=1486748105]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_muk0j")
+theme_override_colors/font_color = Color(0.08, 0.18, 0.23, 1)
+theme_override_colors/font_focus_color = Color(0.08, 0.18, 0.23, 1)
+theme_override_colors/font_pressed_color = Color(0.08, 0.18, 0.23, 1)
+theme_override_colors/font_hover_color = Color(0.08, 0.18, 0.23, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.08, 0.18, 0.23, 1)
+theme_override_colors/font_disabled_color = Color(0.16, 0.2, 0.32, 1)
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("forest_secondary")
+theme_override_styles/pressed = SubResource("forest_soft")
+theme_override_styles/hover = SubResource("forest_soft")
+theme_override_styles/hover_pressed = SubResource("forest_soft")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_dvhue")
+theme_override_styles/focus = SubResource("StyleBoxFlat_8trp6")
+expand_icon = true
+metadata/arcade_authored_control = true
+
+[node name="WorldPreview" type="TextureRect" parent="GameGrid/PingPongButton" unique_id=698328575]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = -12.0
+offset_bottom = -200.0
+mouse_filter = 2
+theme = ExtResource("1_muk0j")
+texture = ExtResource("14_3qpw1")
+expand_mode = 1
+stretch_mode = 6
+metadata/arcade_authored_control = true
+
+[node name="@VBoxContainer@146" type="VBoxContainer" parent="GameGrid/PingPongButton" unique_id=144002162]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = -33.0
+offset_right = -14.0
+offset_bottom = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_muk0j")
+theme_override_constants/separation = 18
+alignment = 1
+metadata/arcade_authored_control = true
+
+[node name="@TextureRect@147" type="TextureRect" parent="GameGrid/PingPongButton/@VBoxContainer@146" unique_id=1585693966]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("1_muk0j")
+texture = SubResource("AtlasTexture_8vf64")
+expand_mode = 1
+stretch_mode = 5
+metadata/arcade_authored_control = true
+
+[node name="@Label@148" type="Label" parent="GameGrid/PingPongButton/@VBoxContainer@146" unique_id=200812771]
+layout_mode = 2
+theme = ExtResource("1_muk0j")
+theme_override_colors/font_color = Color(0.16, 0.2, 0.32, 1)
+theme_override_fonts/font = ExtResource("5_dxjs5")
+theme_override_font_sizes/font_size = 23
+text = "PING-PONG"
+horizontal_alignment = 1
+metadata/arcade_authored_control = true
+
+[node name="Description" type="Label" parent="GameGrid/PingPongButton/@VBoxContainer@146" unique_id=726706627]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme = ExtResource("1_muk0j")
+theme_override_colors/font_color = Color(0.16, 0.2, 0.32, 1)
+theme_override_font_sizes/font_size = 15
+text = "Keep the rally going"
+horizontal_alignment = 1
+autowrap_mode = 3
+metadata/arcade_authored_control = true
+
+[node name="PlayLabel" type="Label" parent="GameGrid/PingPongButton/@VBoxContainer@146" unique_id=1534718082]
+layout_mode = 2
+theme = ExtResource("1_muk0j")
+theme_override_colors/font_color = Color(0.16, 0.2, 0.32, 1)
+theme_override_colors/font_outline_color = Color(0.16, 0.2, 0.32, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("5_dxjs5")
+theme_override_font_sizes/font_size = 24
+text = "PLAY  ›"
+horizontal_alignment = 1
+metadata/arcade_authored_control = true
+
+[node name="BullockCartButton" type="Button" parent="GameGrid" unique_id=337898379]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_muk0j")
+theme_override_colors/font_color = Color(0.08, 0.18, 0.23, 1)
+theme_override_colors/font_focus_color = Color(0.08, 0.18, 0.23, 1)
+theme_override_colors/font_pressed_color = Color(0.08, 0.18, 0.23, 1)
+theme_override_colors/font_hover_color = Color(0.08, 0.18, 0.23, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.08, 0.18, 0.23, 1)
+theme_override_colors/font_disabled_color = Color(0.16, 0.2, 0.32, 1)
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("forest_secondary")
+theme_override_styles/pressed = SubResource("forest_soft")
+theme_override_styles/hover = SubResource("forest_soft")
+theme_override_styles/hover_pressed = SubResource("forest_soft")
+metadata/arcade_authored_control = true
+
+[node name="WorldPreview" type="TextureRect" parent="GameGrid/BullockCartButton" unique_id=1840526261]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme = ExtResource("1_muk0j")
+texture = ExtResource("8_gtsbo")
+expand_mode = 1
+stretch_mode = 6
+metadata/arcade_authored_control = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameGrid/BullockCartButton" unique_id=1210910860]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = 65.0
+offset_right = -14.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_muk0j")
+theme_override_constants/separation = 18
+alignment = 1
+metadata/arcade_authored_control = true
+
+[node name="CartPreview" type="TextureRect" parent="GameGrid/BullockCartButton/VBoxContainer" unique_id=882102805]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("1_muk0j")
+texture = SubResource("AtlasTexture_bullock")
+expand_mode = 1
+stretch_mode = 5
+metadata/arcade_authored_control = true
+
+[node name="TitleLabel" type="Label" parent="GameGrid/BullockCartButton/VBoxContainer" unique_id=1352599483]
+layout_mode = 2
+theme = ExtResource("1_muk0j")
+theme_override_colors/font_color = Color(0.16, 0.2, 0.32, 1)
+theme_override_fonts/font = ExtResource("5_dxjs5")
+theme_override_font_sizes/font_size = 23
+text = "BULLOCK CART"
+horizontal_alignment = 1
+metadata/arcade_authored_control = true
+
+[node name="Description" type="Label" parent="GameGrid/BullockCartButton/VBoxContainer" unique_id=115192247]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme = ExtResource("1_muk0j")
+theme_override_colors/font_color = Color(0.16, 0.2, 0.32, 1)
+theme_override_font_sizes/font_size = 15
+text = "Steer to the target lane"
+horizontal_alignment = 1
+autowrap_mode = 3
+metadata/arcade_authored_control = true
+
+[node name="PlayLabel" type="Label" parent="GameGrid/BullockCartButton/VBoxContainer" unique_id=1402930106]
+layout_mode = 2
+theme = ExtResource("1_muk0j")
+theme_override_colors/font_color = Color(0.16, 0.2, 0.32, 1)
+theme_override_colors/font_outline_color = Color(0.16, 0.2, 0.32, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("5_dxjs5")
+theme_override_font_sizes/font_size = 24
+text = "PLAY  ›"
+horizontal_alignment = 1
+metadata/arcade_authored_control = true
+
+[node name="BackButton" type="Button" parent="." unique_id=1564524278]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -58.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_muk0j")
+theme_override_colors/font_color = Color(0.08, 0.18, 0.23, 1)
+theme_override_colors/font_focus_color = Color(0.08, 0.18, 0.23, 1)
+theme_override_colors/font_pressed_color = Color(0.08, 0.18, 0.23, 1)
+theme_override_colors/font_hover_color = Color(0.08, 0.18, 0.23, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.08, 0.18, 0.23, 1)
+theme_override_colors/font_disabled_color = Color(0.16, 0.2, 0.32, 1)
+theme_override_constants/h_separation = 10
+theme_override_constants/icon_max_width = 20
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("forest_secondary")
+theme_override_styles/pressed = SubResource("forest_soft")
+theme_override_styles/hover = SubResource("forest_soft")
+theme_override_styles/hover_pressed = SubResource("forest_soft")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_svol7")
+theme_override_styles/focus = SubResource("StyleBoxFlat_hck6c")
+text = "← Choose Mechanism"
+icon = ExtResource("patient_icon_arrow-left")
+metadata/arcade_authored_control = true

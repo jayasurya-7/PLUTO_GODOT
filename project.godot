@@ -1,0 +1,55 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
+[application]
+
+config/name="PLUTO"
+config/version="1.0.8"
+run/main_scene="res://scenes/WelcomeScene.tscn"
+config/features=PackedStringArray("4.6", "GL Compatibility")
+config/icon="uid://iu4sbf7q18wm"
+
+[autoload]
+
+DeviceStatusOverlay="*res://scripts/ui/reference_frame.gd"
+EventBus="*res://autoloads/EventBus.gd"
+AppData="*res://autoloads/AppData.gd"
+AppStorage="*res://autoloads/AppStorage.gd"
+DataManager="*res://autoloads/DataManager.gd"
+PlutoComm="*uid://0l07lk2j6cve"
+StatusOverlay="*res://autoloads/StatusOverlay.gd"
+UIManager="*res://scripts/ui/ui_manager.gd"
+MenuMusic="*res://scripts/ui/menu_music.gd"
+AppUpdater="*res://autoloads/AppUpdater.gd"
+LocalServer="*res://autoloads/LocalServer.gd"
+BatteryWatch="*res://autoloads/BatteryWatch.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=800
+window/size/mode=3
+window/size/window_width_override=1920
+window/size/window_height_override=1080
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gdserial/plugin.cfg", "res://addons/pluto_export/plugin.cfg")
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

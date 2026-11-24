@@ -1,0 +1,86 @@
+extends SceneTree
+var checks := 0
+var failures: Array[String] = []
+func _initialize() -> void: run.call_deferred()
+func check(value: bool, label: String) -> void:
+	checks += 1
+	if not value: failures.append(label); printerr("FAIL: ", label)
+func run() -> void:
+	ProjectSettings.set_setting("application/config/version", "1.0.0")
+	var updater = root.get_node("AppUpdater")
+	updater.cache_path = "user://update-fixtures/" + str(Time.get_ticks_usec()) + "/"
+	DirAccess.make_dir_recursive_absolute(updater.cache_path)
+	check(updater.check_error(HTTPRequest.RESULT_CANT_RESOLVE, 0).contains("DNS"), "DNS failure explained")
+	check(updater.check_error(HTTPRequest.RESULT_TLS_HANDSHAKE_ERROR, 0).contains("certificates"), "TLS failure explained")
+	check(updater.check_error(HTTPRequest.RESULT_TIMEOUT, 0).contains("timed out"), "timeout explained")
+	check(updater.check_error(HTTPRequest.RESULT_CANT_CONNECT, 0).contains("firewall"), "connection failure explained")
+	check(updater.newer("v1.0.1", "1.0.0"), "patch version")
+	check(updater.newer("1.10.0", "1.9.9"), "numeric comparison")
+	check(not updater.newer("1.0.0", "1.0.0"), "same version")
+	check(not updater.newer("0.9.9", "1.0.0"), "no downgrade")
+	check(not updater.newer("1.1.0-beta", "1.0.0"), "no beta version")
+	change_scene_to_file("res://scenes/MainScene.tscn")
+	await create_timer(.3).timeout
+	updater.enabled = true
+	updater._set_state("checking", "Checking…")
+	check(not current_scene.get_node("%LoginButton").disabled, "login available while checking")
+	check(not current_scene.get_node("DemoButton").disabled, "demo available while checking")
+	updater._unavailable("Offline")
+	check(not updater.blocks_login(), "offline allowed before update detected")
+	var status_file := FileAccess.open(updater.cache_path + "updater-status.json", FileAccess.WRITE)
+	status_file.store_string(JSON.stringify({"state":"failed", "version":"1.0.0"}))
+	status_file.close()
+	updater._unavailable("Release check unavailable (HTTP 403).")
+	check(not updater.message.contains("failed") and updater.message.contains("HTTP 403"), "installed version ignores stale failure and preserves check error")
+	status_file = FileAccess.open(updater.cache_path + "updater-status.json", FileAccess.WRITE)
+	status_file.store_string(JSON.stringify({"state":"failed", "version":"1.0.1"}))
+	status_file.close()
+	updater._unavailable("Release check unavailable (HTTP 403).")
+	check(updater.message.contains("previously failed") and updater.message.contains("HTTP 403") and not updater.message.contains("restored"), "pending failure retains actual check error without claiming rollback")
+	var release := {"tag_name":"v1.0.1", "assets":[{"name":"PLUTO-windows-x86_64.zip", "browser_download_url":"https://github.com/GokulrajE/GODOT_PLUTO/releases/download/v1.0.1/PLUTO-windows-x86_64.zip", "size":1024, "digest":"sha256:" + "a".repeat(64)}]}
+	check(not updater.release_asset(release).is_empty(), "valid Windows asset")
+	var invalid := release.duplicate(true)
+	invalid.assets[0].browser_download_url = "https://example.com/package.zip"
+	check(updater.release_asset(invalid).is_empty(), "reject unrelated download host")
+	invalid = release.duplicate(true)
+	invalid.assets[0].digest = ""
+	check(updater.release_asset(invalid).is_empty(), "checksum required")
+	updater.accept_release(release)
+	check(not updater.blocks_login(), "new version does not block login")
+	check(FileAccess.file_exists(updater.cache_path + "required.json"), "required update persisted")
+	updater._unavailable("Offline")
+	check(not updater.blocks_login(), "offline login stays available")
+	updater._set_state("downloading", "Downloading…")
+	updater.total = 100
+	updater.downloaded = 50
+	updater.changed.emit()
+	check(current_scene.get_node("UpdatePanel/UpdateProgress").value == 50, "download progress")
+	check(not current_scene.get_node("%RegisterButton").disabled, "registration available during download")
+	updater._set_state("required", "Version v1.0.1 is available. You can update later.")
+	if DisplayServer.get_name() != "headless":
+		await RenderingServer.frame_post_draw
+		root.get_texture().get_image().save_png("res://.godot/arcade-test/update-required.png")
+	updater.request = HTTPRequest.new()
+	updater.add_child(updater.request)
+	updater._downloaded(HTTPRequest.RESULT_CANT_CONNECT, 0, PackedStringArray(), PackedByteArray())
+	check(not updater.blocks_login(), "download interruption does not block login")
+	updater.stage = updater.cache_path + "corrupt.zip"
+	var corrupt := FileAccess.open(updater.stage, FileAccess.WRITE)
+	corrupt.store_string("corrupt")
+	corrupt.close()
+	updater.request = HTTPRequest.new()
+	updater.add_child(updater.request)
+	updater._downloaded(HTTPRequest.RESULT_SUCCESS, 200, PackedStringArray(), PackedByteArray())
+	check(not updater.blocks_login() and updater.message.contains("verification failed"), "checksum failure does not block login")
+	updater._set_state("downloaded", "Update downloaded. Restart when you are ready.")
+	check(not updater.blocks_login(), "download completion does not force restart")
+	updater.check_updates()
+	check(updater.state == "downloaded", "returning to login preserves ready download")
+	check(current_scene.get_node("UpdatePanel/UpdateAction").text == "Restart & install", "explicit install action")
+	check(not current_scene.get_node("UpdatePanel") is Panel, "compact controls replace card")
+	updater.release = {}
+	updater.accept_release({"tag_name":"v1.0.0", "assets":[]})
+	check(not updater.blocks_login(), "current version enables login")
+	updater.enabled = false
+	print("UPDATER UI: ",checks," checks, ",failures.size()," failures")
+	quit(0 if failures.is_empty() else 1)

@@ -1,0 +1,292 @@
+[gd_scene format=3 uid="uid://cs5al7mnnn6u6"]
+
+[ext_resource type="Theme" path="res://Assets/Arcade/daylight-theme.tres" id="1_oj0i8"]
+[ext_resource type="Script" path="res://scripts/CelebrationCard.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://Assets/vecteezy_3d-star-icon-isolated-on-background-customer-rating_18842764.png" id="2_star"]
+[ext_resource type="Texture2D" path="res://Assets/Arcade/celebration-panel.svg" id="3_4lxwa"]
+[ext_resource type="Texture2D" path="res://Assets/pngwing.com (5).png" id="3_confetti"]
+[ext_resource type="Texture2D" path="res://Assets/pngwing.com (8).png" id="4_ribbon"]
+[ext_resource type="Texture2D" path="res://Assets/pngwing.com (3).png" id="5_popper"]
+[ext_resource type="AudioStream" path="res://Assets/Arcade/Online/star-celebration.ogg" id="6_audio"]
+[ext_resource type="FontVariation" path="res://Assets/Arcade/Online/Outfit-Medium.tres" id="6_cj0m7"]
+[ext_resource type="Texture2D" path="res://Assets/Arcade/sprites-source.png" id="8_2pjgm"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_luaou"]
+texture = ExtResource("3_4lxwa")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0xd2"]
+atlas = ExtResource("8_2pjgm")
+region = Rect2(1056, 539, 411, 395)
+filter_clip = true
+
+[node name="CelebrationCard" type="Control" unique_id=852639605]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_oj0i8")
+script = ExtResource("1_script")
+metadata/arcade_authored = true
+metadata/arcade_authored_control = true
+
+[node name="Overlay" type="ColorRect" parent="." unique_id=1581395962]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_oj0i8")
+color = Color(0, 0, 0.08, 0.72)
+metadata/arcade_authored_control = true
+
+[node name="Card" type="Panel" parent="." unique_id=821008783]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -205.0
+offset_right = 320.0
+offset_bottom = 205.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_oj0i8")
+theme_override_styles/panel = SubResource("StyleBoxTexture_luaou")
+metadata/arcade_authored_control = true
+
+[node name="ConfettiBg" type="TextureRect" parent="Card" unique_id=491473117]
+visible = false
+modulate = Color(1, 1, 1, 0.12)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_oj0i8")
+texture = ExtResource("3_confetti")
+expand_mode = 1
+stretch_mode = 6
+metadata/arcade_authored_control = true
+
+[node name="Ribbon" type="Sprite2D" parent="Card" unique_id=1557380208]
+visible = false
+position = Vector2(289.5, 58)
+scale = Vector2(0.28831938, 0.17158934)
+texture = ExtResource("4_ribbon")
+
+[node name="RibbonLabel" type="Label" parent="Card" unique_id=201231456]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 616.0
+offset_bottom = 74.0
+theme = ExtResource("1_oj0i8")
+theme_override_colors/font_color = Color(0.10, 0.14, 0.23, 1)
+theme_override_colors/font_outline_color = Color(0.16, 0.20, 0.32, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("6_cj0m7")
+theme_override_font_sizes/font_size = 32
+text = "STAR EARNED"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/arcade_authored_control = true
+
+[node name="PopperLeft" type="TextureRect" parent="Card" unique_id=410693949]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_top = -110.0
+offset_right = 110.0
+offset_bottom = 10.0
+grow_vertical = 0
+mouse_filter = 2
+theme = ExtResource("1_oj0i8")
+texture = ExtResource("5_popper")
+expand_mode = 1
+stretch_mode = 5
+metadata/arcade_authored_control = true
+
+[node name="PopperRight" type="TextureRect" parent="Card" unique_id=1263677590]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -110.0
+offset_top = -110.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme = ExtResource("1_oj0i8")
+texture = ExtResource("5_popper")
+expand_mode = 1
+stretch_mode = 5
+flip_h = true
+metadata/arcade_authored_control = true
+
+[node name="BodyHBox" type="HBoxContainer" parent="Card" unique_id=1515656792]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = 90.0
+offset_right = -28.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_oj0i8")
+theme_override_constants/separation = 14
+alignment = 1
+metadata/arcade_authored_control = true
+
+[node name="Trophy" type="TextureRect" parent="Card/BodyHBox" unique_id=1757152183]
+visible = false
+custom_minimum_size = Vector2(160, 200)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("1_oj0i8")
+expand_mode = 1
+stretch_mode = 5
+metadata/arcade_authored_control = true
+
+[node name="ScoreVBox" type="VBoxContainer" parent="Card/BodyHBox" unique_id=2073439011]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("1_oj0i8")
+theme_override_constants/separation = 8
+alignment = 1
+metadata/arcade_authored_control = true
+
+[node name="TitleLabel" type="Label" parent="Card/BodyHBox/ScoreVBox" unique_id=1840170640]
+layout_mode = 2
+theme = ExtResource("1_oj0i8")
+theme_override_colors/font_color = Color(0.96, 0.98, 1, 1)
+theme_override_colors/font_outline_color = Color(0.16, 0.20, 0.32, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("6_cj0m7")
+theme_override_font_sizes/font_size = 24
+text = "KEEP GROWING!"
+horizontal_alignment = 1
+metadata/arcade_authored_control = true
+
+[node name="Separator" type="HSeparator" parent="Card/BodyHBox/ScoreVBox" unique_id=1073304629]
+layout_mode = 2
+theme = ExtResource("1_oj0i8")
+metadata/arcade_authored_control = true
+
+[node name="ArrowLabel" type="Label" parent="Card/BodyHBox/ScoreVBox" unique_id=390708187]
+layout_mode = 2
+theme = ExtResource("1_oj0i8")
+theme_override_colors/font_color = Color(0.96, 0.98, 1, 1)
+theme_override_font_sizes/font_size = 19
+text = "A new personal best"
+horizontal_alignment = 1
+metadata/arcade_authored_control = true
+
+[node name="YesterdayLabel" type="Label" parent="Card/BodyHBox/ScoreVBox" unique_id=1595734802]
+layout_mode = 2
+theme = ExtResource("1_oj0i8")
+theme_override_colors/font_color = Color(0.96, 0.98, 1, 1)
+theme_override_font_sizes/font_size = 19
+text = "Yesterday:  24 catches"
+horizontal_alignment = 1
+metadata/arcade_authored_control = true
+
+[node name="TodayLabel" type="Label" parent="Card/BodyHBox/ScoreVBox" unique_id=937493658]
+layout_mode = 2
+theme = ExtResource("1_oj0i8")
+theme_override_colors/font_color = Color(0.96, 0.98, 1, 1)
+theme_override_colors/font_outline_color = Color(0.16, 0.20, 0.32, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("6_cj0m7")
+theme_override_font_sizes/font_size = 24
+text = "Today:  30 catches"
+horizontal_alignment = 1
+metadata/arcade_authored_control = true
+
+[node name="StarTex" type="TextureRect" parent="Card/BodyHBox/ScoreVBox" unique_id=1967830182]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_oj0i8")
+texture = SubResource("AtlasTexture_w0xd2")
+expand_mode = 1
+stretch_mode = 5
+metadata/arcade_authored_control = true
+
+[node name="StarTL" type="TextureRect" parent="Card" unique_id=201231457]
+visible = false
+layout_mode = 0
+offset_left = 8.0
+offset_top = 65.0
+offset_right = 50.0
+offset_bottom = 107.0
+mouse_filter = 2
+theme = ExtResource("1_oj0i8")
+texture = ExtResource("2_star")
+expand_mode = 1
+stretch_mode = 5
+metadata/arcade_authored_control = true
+
+[node name="StarTR" type="TextureRect" parent="Card" unique_id=201231458]
+visible = false
+layout_mode = 0
+offset_left = 494.0
+offset_top = 65.0
+offset_right = 536.0
+offset_bottom = 107.0
+mouse_filter = 2
+theme = ExtResource("1_oj0i8")
+texture = ExtResource("2_star")
+expand_mode = 1
+stretch_mode = 5
+metadata/arcade_authored_control = true
+
+[node name="StarBL" type="TextureRect" parent="Card" unique_id=201231459]
+visible = false
+layout_mode = 0
+offset_left = 10.0
+offset_top = 355.0
+offset_right = 50.0
+offset_bottom = 395.0
+mouse_filter = 2
+theme = ExtResource("1_oj0i8")
+texture = ExtResource("2_star")
+expand_mode = 1
+stretch_mode = 5
+metadata/arcade_authored_control = true
+
+[node name="StarBR" type="TextureRect" parent="Card" unique_id=201231460]
+visible = false
+layout_mode = 0
+offset_left = 490.0
+offset_top = 355.0
+offset_right = 530.0
+offset_bottom = 395.0
+mouse_filter = 2
+theme = ExtResource("1_oj0i8")
+texture = ExtResource("2_star")
+expand_mode = 1
+stretch_mode = 5
+metadata/arcade_authored_control = true
+
+[node name="Audio" type="AudioStreamPlayer" parent="." unique_id=1049159710]
+stream = ExtResource("6_audio")
+volume_db = -5.0

@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bl12vaekughd2"]
+
+[ext_resource type="Theme" uid="uid://o0pld3buj8af" path="res://Assets/Arcade/daylight-theme.tres" id="1_cfs8r"]
+[ext_resource type="Script" uid="uid://be371ec8g8ryp" path="res://scripts/set_duration_scene.gd" id="1_sd001"]
+[ext_resource type="Texture2D" path="res://Assets/Arcade/forest-soft.png" id="3_oqrxx"]
+[ext_resource type="Script" path="res://scripts/ui/living_garden.gd" id="living_garden_script"]
+
+[node name="SetDurationScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_cfs8r")
+script = ExtResource("1_sd001")
+metadata/arcade_authored = true
+metadata/arcade_authored_control = true
+
+[node name="ArcadeBackdrop" type="TextureRect" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme = ExtResource("1_cfs8r")
+texture = ExtResource("3_oqrxx")
+expand_mode = 1
+stretch_mode = 6
+script = ExtResource("living_garden_script")
+metadata/arcade_authored_control = true
